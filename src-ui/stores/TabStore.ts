@@ -8,14 +8,20 @@ export const useTabsStore = defineStore('alerts', () => {
 
     const TabsArray = ref<TabsArrayStruct[]>([{name: "Home", index: 0}]);
     const CurrentIndex = ref(0);
+    const Overflowed = ref(false)
+
+    function setOverflowed(bool: boolean){
+        Overflowed.value = bool;
+    }
 
     function setCurrentIndex(index: number){
         CurrentIndex.value = index;
     }
 
-    function setTabsArray( oldIndex: number, newIndex : number){
-        TabsArray.value[oldIndex].index = oldIndex;
-        TabsArray.value[newIndex].index = newIndex;
+    function setTabsArray(){
+        for(let i = 0; i < TabsArray.value.length; i++ ){
+            TabsArray.value[i].index = i;
+        }
     }
 
     function AddTab(){
@@ -26,8 +32,6 @@ export const useTabsStore = defineStore('alerts', () => {
     }
 
     function DeleteTab(index :number){
-        console.log("Deketeing")
-        console.log(TabsArray.value);
         TabsArray.value.splice(index,1);
         for(let i = index; i < TabsArray.value.length; i++){
             TabsArray.value[i].index = i;
@@ -44,10 +48,12 @@ export const useTabsStore = defineStore('alerts', () => {
     return {
         TabsArray,
         CurrentIndex,
+        Overflowed,
         setCurrentIndex,
         setTabsArray,
         AddTab,
-        DeleteTab
+        DeleteTab,
+        setOverflowed
     }
 
 })

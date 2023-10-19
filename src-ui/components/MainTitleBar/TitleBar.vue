@@ -1,6 +1,3 @@
-<script setup lang="ts">
-
-</script>
 
 <template>
     <div class="TitleBar" data-tauri-drag-region>
@@ -12,8 +9,8 @@
             </div>
         </div>
 
-        <Tabs/>
         <ClientOnly>
+            <Tabs />
             <CloseButtons/>
         </ClientOnly>
     </div>
@@ -48,6 +45,5 @@
         }
     }
 }
-
 
 </style>

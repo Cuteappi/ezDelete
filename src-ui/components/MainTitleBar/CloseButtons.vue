@@ -34,7 +34,11 @@
 import { appWindow } from '@tauri-apps/api/window';
 
 const MinimizeWindow = () => appWindow.minimize();
-const MaximizeWindow = () => appWindow.toggleMaximize();
+
+const MaximizeWindow = () => {
+    appWindow.toggleMaximize();
+}
+
 const CloseWindow = () => appWindow.close();
 
 </script>
